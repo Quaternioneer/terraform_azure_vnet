@@ -1,7 +1,14 @@
 ### Virtual Network ###
-output "vnet_subnet" {
-  value = azurerm_virtual_network.vnet.subnet
+
+#begin subnets#
+output "vnet_subnet_public" {
+  value = azurerm_subnet.public.address_prefix
 }
+
+output "vnet_subnet_private" {
+  value = azurerm_subnet.private.address_prefix
+}
+#end subnets#
 
 output "vnet_guid" {
   value = azurerm_virtual_network.vnet.guid

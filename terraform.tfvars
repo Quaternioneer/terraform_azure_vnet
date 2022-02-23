@@ -3,6 +3,8 @@ resource_group_name="project2beta"
 location="westus2"
 
 ### Virtual Network ###
+#ToDo: consolidate subnet_tags and make a map (or object) with keys public, private
+#would that obfuscate things
 subnet_public_tags={
     name = "public"
     terraform = "true"

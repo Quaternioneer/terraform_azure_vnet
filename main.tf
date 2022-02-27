@@ -1,9 +1,6 @@
 provider "azurerm" {
   features {}
-
 }
-
-
 
 resource "azurerm_resource_group" "resource_group" {
   name     = var.resource_group_name
@@ -12,12 +9,6 @@ resource "azurerm_resource_group" "resource_group" {
 
 resource "azurerm_network_security_group" "net_sg" {
   name                = "${var.resource_group_name}-net_sg"
-  location            = azurerm_resource_group.resource_group.location
-  resource_group_name = azurerm_resource_group.resource_group.name
-}
-
-resource "azurerm_network_ddos_protection_plan" "ddos_plan" {
-  name                = "${var.resource_group_name}-ddos_plan"
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
 }

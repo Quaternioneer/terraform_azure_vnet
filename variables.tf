@@ -2,7 +2,7 @@
 ### AZ Resource Group Configuration ###
 variable "resource_group_name" {
   description = "Name of Azure Resource Group to Create/Manage: "
-  default = "project2alpha"
+  default = "team9-A"
 }
 
 variable "location" {
@@ -34,4 +34,12 @@ variable "subnet_public_tags" {
 variable "subnet_private_tags" {
   description = "Tags for the private subnet"
   default = ["10.0.0.2/24"]
+}
+
+### Backend accounts ###
+variable "storage_account_name" {
+}
+
+variable "container_name" {
+  
 }

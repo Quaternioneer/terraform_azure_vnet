@@ -30,15 +30,6 @@ resource "azurerm_subnet" "private" {
   resource_group_name  = azurerm_resource_group.resource_group.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = var.subnet_private_tags["address_prefix"]
-
-  delegation {
-    name = "acctestdelegation"
-
-    service_delegation {
-      name    = "Microsoft.ContainerInstance/containerGroups"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action"]
-    }
-  }
 }
 
 
@@ -50,15 +41,6 @@ resource "azurerm_subnet" "public" {
   resource_group_name  = azurerm_resource_group.resource_group.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = var.subnet_public_tags["address_prefix"]
-
-  delegation {
-    name = "acctestdelegation"
-
-    service_delegation {
-      name    = "Microsoft.ContainerInstance/containerGroups"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action"]
-    }
-  }
 }
 
 resource "azurerm_public_ip" "public_ip" {

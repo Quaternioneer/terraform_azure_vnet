@@ -19,13 +19,7 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = azurerm_resource_group.resource_group.name
   address_space       = var.vnet_address_space
   dns_servers         = var.vnet_dns_servers
-
-  ddos_protection_plan {
-    id     = azurerm_network_ddos_protection_plan.ddos_plan.id
-    enable = false
-  }
   
-
   tags = var.vnet_tags
 }
 

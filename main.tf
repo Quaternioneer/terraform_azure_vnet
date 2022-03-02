@@ -7,12 +7,6 @@ resource "azurerm_resource_group" "resource_group" {
   location = var.location
 }
 
-resource "azurerm_network_security_group" "net_sg" {
-  name                = "${var.resource_group_name}-net_sg"
-  location            = azurerm_resource_group.resource_group.location
-  resource_group_name = azurerm_resource_group.resource_group.name
-}
-
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.resource_group_name}-vnet"
   location            = azurerm_resource_group.resource_group.location
@@ -42,7 +36,7 @@ resource "azurerm_subnet" "public" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = var.subnet_public_tags["address_prefix"]
 }
-
+/*
 resource "azurerm_public_ip" "public_ip" {
   name                = "acceptanceTestPublicIp1"
   resource_group_name = azurerm_resource_group.resource_group.name
@@ -64,60 +58,4 @@ resource "azurerm_public_ip_prefix" "example" {
   tags = {
     environment = "Production"
   }
-}
-
-resource "azurerm_route_table" "example" {
-  name                          = "acceptanceTestSecurityGroup1"
-  location                      = azurerm_resource_group.resource_group.location
-  resource_group_name           = azurerm_resource_group.resource_group.name
-  disable_bgp_route_propagation = false
-
-  route {
-    name           = "route1"
-    address_prefix = "10.1.0.0/16"
-    next_hop_type  = "vnetlocal"
-  }
-
-  tags = {
-    environment = "Production"
-  }
-}
-
-
-### Gateways ###
-#2022-02-22 ND changed example.id subnet to public.id
-resource "azurerm_nat_gateway" "example" {
-  name                = "example-natgateway"
-  location            = azurerm_resource_group.resource_group.location
-  resource_group_name = azurerm_resource_group.resource_group.name
-}
-
-resource "azurerm_subnet_nat_gateway_association" "example" {
-  subnet_id      = azurerm_subnet.public.id
-  nat_gateway_id = azurerm_nat_gateway.example.id
-}
-
-### NETWORK SECURITY GROUPS ###
-
-resource "azurerm_network_security_group" "example" {
-  name                = "example-nsg"
-  location            = azurerm_resource_group.resource_group.location
-  resource_group_name = azurerm_resource_group.resource_group.name
-
-  security_rule {
-    name                       = "test123"
-    priority                   = 100
-    direction                  = "Inbound"
-    access                     = "Allow"
-    protocol                   = "*"
-    source_port_range          = "*"
-    destination_port_range     = "*"
-    source_address_prefix      = "*"
-    destination_address_prefix = "*"
-  }
-}
-#2022-02-22 ND changed example.id subnet to public.id
-resource "azurerm_subnet_network_security_group_association" "example" {
-  subnet_id                 = azurerm_subnet.public.id
-  network_security_group_id = azurerm_network_security_group.example.id
-}
+}*/

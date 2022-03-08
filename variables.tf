@@ -37,9 +37,11 @@ variable "subnet_private_tags" {
 }
 
 ### Backend accounts ###
+/*
 variable "storage_account_name" {
 }
 
 variable "container_name" {
   
 }
+*/

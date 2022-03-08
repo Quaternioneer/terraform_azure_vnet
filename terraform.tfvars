@@ -24,6 +24,8 @@ vnet_tags = {
 }
 
 ### Backend accounts ###
+/*
 storage_account_name = "statebox"
 container_name       = "smallerbox"
 key                  = "vnet.tfstate"  
+*/

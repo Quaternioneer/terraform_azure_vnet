@@ -8,6 +8,10 @@ output "vnet_subnet_public" {
 output "vnet_subnet_private" {
   value = azurerm_subnet.private.address_prefix
 }
+
+output "subnet_id" {
+  value = azurerm_virtual_network.vnet.subnet.id
+}
 #end subnets#
 
 output "vnet_guid" {
